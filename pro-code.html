@@ -1,0 +1,653 @@
+<script>
+	appurl 		= window.location.href;
+	oktaorg 	= 'https://atko-financial-aus.oktapreview.com';
+	registerurl = 'https://atko-financial-aus.oktapreview.com/api/v1/registration/reg1d4p8q8drPqFCt0x7/register';
+</script>
+<html>
+	<head>
+		<!-- Latest CDN production JavaScript and CSS -->
+		<script src="https://global.oktacdn.com/okta-signin-widget/5.4.3/js/okta-sign-in.min.js" type="text/javascript"></script>
+		<link href="https://global.oktacdn.com/okta-signin-widget/5.4.3/css/okta-sign-in.min.css" type="text/css" rel="stylesheet"/> 	 	
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+		<link rel="preconnect" href="https://fonts.gstatic.com"> 
+		<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;500&display=swap" rel="stylesheet">
+		<title>Atko Finance :: Portal</title>
+		<link rel="icon" type="image/png" sizes="48x48" href="logo.jpg">
+		<style>
+			body {
+				padding: 0;
+				margin: 0;
+				font-family: 'Raleway', sans-serif;
+			}
+
+			.cnt_centerbody {
+				margin-left: 10vw;
+				width:80vw;
+				max-width: 900px;
+			}
+
+			.cnt_header {
+				border-color: #c5c5c5;
+				border-style: solid;
+				border-width: 0 0 1 0;
+			}
+
+			.cnt_footer {
+				border-color: #c5c5c5;
+				border-style: solid;
+				border-width: 1 0 0 0;
+				position: absolute;
+				bottom: 0;
+				width: 100vw;
+			}
+
+			.img_headerlogo {
+				height:60px;
+				margin-left: 10vw; 
+				cursor: pointer;
+			}
+
+			.btn_light {
+				background-color: #fff;
+				border-color: #007ab2;
+				border-style: solid;
+				border-width: 2px;
+				border-radius: 5px;
+				padding:6px;
+				padding-left: 10px;
+				padding-right: 10px;
+				width: fit-content;
+				font-weight: bold;
+				font-size: 12px;
+				float:right;
+				margin: 14px;
+				color: #007ab2;
+				font-family: 'Raleway', sans-serif;
+			}
+			
+			.btn_login_light {
+				width: 350px;
+				text-align: center;
+				padding-top: 12px;
+				padding-bottom: 12px;
+				margin-left: 30%; 
+				background-color: #fff;
+				border-color: #007ab2;
+				border-style: solid;
+				border-width: 2px;
+				border-radius: 5px;
+				font-weight: bold;
+				font-size: 15px;
+				color: #007ab2;
+				letter-spacing: 0.1em;
+				font-family: 'Raleway', sans-serif;				
+			}
+
+			.btn_headerbuttonright {
+				margin-right: 10vw; 
+				cursor: pointer;
+
+			}
+
+			h1 {
+				margin-top: 50px;
+				font-size: 35px;
+				font-family: 'Raleway', sans-serif;
+				font-weight: 200;
+				text-align: center;
+			}
+
+			h3 {
+				font-size: 15px;
+				font-family: 'Raleway', sans-serif;
+				font-weight: 300;
+				text-align: center;				
+			}
+			
+			.lbl_fieldlabel {
+				width: 100%;
+				margin:auto; 
+				display: block;
+				font-weight: bolder;
+				font-size: 70%;
+				margin-top: 35px;
+				letter-spacing: 0.1em;
+			}
+
+			.lbl_intro {
+				width: 100%;
+				text-align: center;
+				margin:auto; 
+				position: relative;
+				display: block;
+				font-size: 80%;
+				margin-top: 35px;
+				letter-spacing: 0.1em;
+			}
+
+			h4, p {
+				width: 100%;
+				margin-left: auto; 
+				position: relative;
+				display: block;
+				margin-top: 35px;
+			}
+
+			h4 {
+				font-size: 110%;
+				font-weight: bolder;
+			}
+
+			.button_light {
+				width: 100%;
+				text-align: center;
+				padding-top: 12px;
+				padding-bottom: 12px;
+				margin:auto;
+				background-color: #fff;
+				border-color: #007ab2;
+				border-style: solid;
+				border-width: 2px;
+				border-radius: 5px;
+				font-weight: bold;
+				font-size: 15px;
+				color: #007ab2;
+				letter-spacing: 0.1em;
+				font-family: 'Raleway', sans-serif;	
+				cursor: pointer;
+			}
+
+			.button_link {
+				width: 100%;
+				text-align: center;
+				padding-top: 12px;
+				padding-bottom: 12px;
+				margin:auto;
+				background-color: #fff;
+				border-color: #fff;
+				border-style: solid;
+				border-width: 2px;
+				border-radius: 5px;
+				font-weight: bold;
+				font-size: 15px;
+				color: #007ab2;
+				letter-spacing: 0.1em;
+				font-family: 'Raleway', sans-serif;	
+				cursor: pointer;			
+
+			}
+
+			.button_dark {
+				width: 100%;
+				text-align: center;
+				padding-top: 12px;
+				padding-bottom: 12px;
+				margin-left: auto; 
+				background-color: #007ab2;
+				border-color: #007ab2;
+				border-style: solid;
+				border-width: 2px;
+				border-radius: 5px;
+				font-weight: bold;
+				font-size: 15px;
+				color: #fff;
+				letter-spacing: 0.1em;
+				font-family: 'Raleway', sans-serif;
+				cursor: pointer;			
+
+			}
+
+			.inp_normal {
+				width: 100%;
+				margin-top: 20px;
+				padding:5px;
+				border-color: #000;
+				border-style: solid;
+				border-width: 0 0 1 0;
+				font-family: 'Raleway', sans-serif;
+				font-size: 120%;
+				outline: none;
+				display: block;
+				font-weight: 300;
+			}
+
+			.inp_small {
+				width: 50%;
+				margin-top: 20px;
+				padding:5px;
+				border-color: #000;
+				border-style: solid;
+				border-width: 0 0 1 0;
+				font-family: 'Raleway', sans-serif;
+				margin:auto;
+				font-size: 120%;
+				outline: none;
+				display: block;
+			}
+
+			.cnt_main {
+				max-width: 400px;
+				margin: auto;
+			}
+
+			.lbl_footeritem {
+				padding: 30px;
+				line-height: 70px;
+				color: #a6a6a6;
+			}
+
+			.lbl_footeritem:first-child {
+				margin-left: 10vw;
+			}
+			.cnt_page {
+				display: none;
+				width:80vw;
+				margin:auto;
+			}
+			.cnt_factor {
+				display: none;	
+				text-align: left;
+			}
+
+			.inp_otp {
+				font-size: 200%;
+				letter-spacing: 0.3em;
+				margin-top: 40px;
+				text-align: center;
+			}
+
+			/* Chrome, Safari, Edge, Opera */
+			input::-webkit-outer-spin-button,
+			input::-webkit-inner-spin-button {
+			  -webkit-appearance: none;
+			  margin: 0;
+			}
+
+			/* Firefox */
+			input[type=number] {
+			  -moz-appearance: textfield;
+			}
+
+			.img_fakeapp {
+				width: 100%;
+			}
+
+			.cnt_appheader {
+				background-color: #e6f4f5;
+				min-height: 230px;
+				margin:auto;
+			}
+
+			.lbl_appwelcome {
+				padding-top: 70px;
+				margin-top: 85px;
+				font-size: 40px;
+				font-family: 'Raleway', sans-serif;
+				font-weight: 200;
+				text-align: center;				
+			}
+
+			.btn_logout {
+				display: none;
+			}
+
+            .inp_fields {
+                display: inline-block;
+                width: 49%;
+            }
+
+            .cnt_fields {
+                text-align: center;
+            }
+		</style>
+	</head>
+	<body>
+<!-- Page header -->
+		<div class="cnt_header">
+			<img class="img_headerlogo btn_home" src="logo.jpg" />
+			<div class="btn_logout btn_light btn_headerbuttonright" type="button">Logout</div>
+			<div class="btn_contactus btn_light btn_headerbuttonright" type="button">Contact us</div>
+		</div>
+<!-- Page: login -->
+		<div class="cnt_centerbody_unknown cnt_page">
+			<h1>Login to My Atko Finance portal</h1>
+			<div class="cnt_main">	
+				<span class="lbl_fieldlabel">Date of Birth</span>
+				<input class="inp_date_login inp_normal inp_dob" type="password" type="date"><br>
+				<span class="lbl_fieldlabel">Emailaddress or Phone number</span>
+				<input class="inp_date_login inp_normal inp_username" type="text"><br>
+				<div class="btn_login button_dark">LOGIN</div>
+				<h3>or</h3>
+				<div class="btn_login_fb disabled button_light">LOGIN WITH FACEBOOK</div><br>
+				<div class="btn_login_go disabled button_light">LOGIN WITH GOOGLE</div><br><br>
+				<div class="btn_register button_link">&#10132; DON'T HAVE AN ACCOUNT? SIGN UP</div>
+			</div>
+		</div>
+<!-- Page: mfa factor select -->
+		<div class="cnt_centerbody_mfa cnt_page">
+			<h1 class="lbl_header_known">Help us confirm your contact</h1>
+			<span class="lbl_intro">Select a mobile or email and we'll send a verification code to you</span>
+			<div class="cnt_main">	
+				<div class="cnt_factor cnt_factor_phone">
+					<h4>Phone number</h4>
+					<p>
+						<input type="radio" name="factor" value="sms">
+	  					<label class="lbl_factor_phone" for="sms">[ phone number ]</label>
+					</p>			
+				</div>
+				<div class="cnt_factor cnt_factor_email">
+					<h4>Email address</h4>
+					<p>
+						<input type="radio" name="factor" value="email">
+	  					<label class="lbl_factor_email" for="email">[ email ]</label>
+					</p>			
+				</div><br><br>
+				<div class="btn_sendcode button_dark">SEND VERIFICATION CODE</div><br>
+				<div class="btn_lostusername button_light">CAN'T FIND MY CONTACT</div><br>
+
+			</div>
+		</div>
+<!-- Page: mfa factor confirmation with otp -->
+		<div class="cnt_centerbody_mfa_confirm cnt_page">
+			<h1 class="lbl_header_known">Help us confirm your contact</h1>
+			<span class="lbl_intro">Please confirm the code we have sent to <strong><span class="lbl_selected_factor">you</span></strong></span>
+			<div class="cnt_main">	
+				<input class="inp_normal inp_otp" type="number"><br>
+				<div class="btn_confirmcode button_dark">NEXT</div><br>
+				<div class="btn_resendcode button_light">SEND CODE AGAIN</div><br>
+			</div>
+		</div>
+<!-- Page: user not found -->
+		<div class="cnt_centerbody_lostusername cnt_page">
+			<h1 class="lbl_header_known">We could not find you!</h1>
+			<span class="lbl_intro">We still need more details. Please add details below and we're done.</span>
+                <div class="inp_fields">
+  					<span class="lbl_fieldlabel">Date of birth</span>
+                    <input class="inp_normal inp_dob" type="date">
+                    <input class="inp_normal inp_username" type="hidden">
+                    <input class="inp_normal inp_zipcode" type="text" placeholder="Zip code">
+                </div>
+                <div class="inp_fields">
+                    <input class="inp_normal inp_login inp_lastname" type="text" placeholder="Last name">
+                    <input class="inp_normal inp_login inp_policy" type="text" placeholder="Policy number (optional)">
+                </div>
+                <br><br>
+			<div class="cnt_main">	
+                <div class="btn_login button_dark">NEXT</div><br>
+                <div class="btn_login btn_home button_light">BACK</div>
+            </div>
+		</div>
+<!-- Page: login succesful -->
+		<div class="cnt_centerbody_app cnt_page">
+			<div class="cnt_appheader">
+				<p class="lbl_appwelcome">Welcome to My Atko Finance portal<br><b><span class="lbl_user">enjoy!</span></b></p>
+			</div>
+			<img class="img_fakeapp" src="portal.jpg" />
+		</div>
+<!-- Page: register -->
+		<div class="cnt_centerbody_register cnt_page">
+			<h1 class="lbl_header_known">Sign up for an account</h1>
+			<span class="lbl_intro">Please provide this information to sign up for a new account.</span>
+                <div class="inp_fields">
+  					<span class="lbl_fieldlabel">Date of birth</span>
+                    <input class="inp_normal inp_reg_dob" type="date">
+                    <input class="inp_normal inp_reg_email" type="email" placeholder="email">
+                    <input class="inp_normal inp_login inp_reg_firstname" type="text" placeholder="first name">
+                </div>
+                <div class="inp_fields">
+                    <input class="inp_normal inp_login inp_reg_policy" type="text" placeholder="policy number">
+					<input class="inp_normal inp_reg_zipcode" type="text" placeholder="zip code">                    
+					<input class="inp_normal inp_login inp_reg_lastname" type="text" placeholder="last name">
+                </div>
+                <br><br>
+			<div class="cnt_main">	
+                <div class="btn_register_submit_disabled disabled button_dark">REGISTER NOW</div><br>
+                <div class="btn_back btn_home button_light">BACK</div>
+            </div>
+		</div>
+<!-- Page footer -->
+		<div class="cnt_footer">
+			<span class="lbl_footeritem"><strong>&#169; Atko Finance 2021</strong></span> 
+			<span class="lbl_footeritem">Contact Us</span>
+			<span class="lbl_footeritem">Privacy Policy</span>
+			<span class="lbl_footeritem">Terms of Use</span>
+		</div>
+	</body>
+</html>
+<script>
+// Execute when document is loaded, a login is shown no matter if the user has a session
+	$(document).ready(function(){
+		$(".cnt_page").hide();
+		 $(".cnt_centerbody_unknown").show();
+	})
+
+// Execute when register button is clicked
+	$(".btn_register").click(function(){
+		$(".cnt_page").hide();
+		$(".cnt_centerbody_register").show();
+	});
+
+// Execute on submitting the registration form
+	$(".btn_register_submit").click(function(){
+		var username 	= $(".inp_reg_email").val();
+		var password 	= $(".inp_reg_dob").val();
+		var firstName 	= $(".inp_reg_firstname").val();
+		var lastName 	= $(".inp_reg_lastname").val();
+
+		var settings = {
+		  "url": registerurl,
+		  "method": "POST",
+		  "timeout": 0,
+		  "headers": {
+		    "Accept": "application/json",
+		    "Content-Type": "application/json"
+		  },
+			"data": '{"userProfile":{"email":"'+ username +'","password":"'+ password +'","firstName":"'+ firstName +'","lastName":"'+ lastName +'", "dob_login": "true"},"relayState":"/user/notifications"}'
+
+		};
+		console.log(settings);
+		$.ajax(settings).done(function (response) {
+			$(".cnt_page").hide();
+			$(".cnt_centerbody_register_thankyou").show();
+		}).fail(function (response) {
+			alert('something went wrong!');
+			$(".cnt_page").hide();
+			$(".cnt_centerbody_unknown").show();
+
+		});
+
+
+
+	});
+
+// Execute on disabled button
+	$(".disabled").click(function(){
+		alert('this feature is not configured in the quick POC');
+	});
+
+// Execute when logo is clicked
+	$(".btn_home").click(function() {
+		window.location.href = appurl;
+	})
+
+// Execute when contact us is clicked to pre-fill the login form (demo only, insecure practice!)
+	$(".btn_contactus").click(function(){
+		// Set data for login and advanced search
+		$(".inp_username").val('tommy.tate@mailinator.com');
+		$(".inp_dob").val('2001-02-01');
+        $(".inp_firstname").val('Tommy');
+        $(".inp_lastname").val('Tate');
+        $(".inp_zipcode").val('12345');
+        $(".inp_policy").val('AB-32521123G');
+        $(".inp_email").val('tommy.tate@mailinator.com');
+
+        // Set data for registration
+		$(".inp_reg_policy").val('AA-55465775A');
+		$(".inp_reg_dob").val('2001-02-01');
+        $(".inp_reg_firstname").val('Thomas');
+        $(".inp_reg_lastname").val('Tate');
+        $(".inp_reg_zipcode").val('1111AA');
+        $(".inp_reg_email").val('thomas.tate@mailinator.com');
+    })
+
+// Execute on logout
+	$(".btn_logout").click(function(){
+		document.location = oktaorg + '/login/signout?fromURI='+ appurl
+	})
+
+// Execute when user selected factor and asks for verification code
+	$(".btn_sendcode").click(function(){
+		$(".cnt_page").hide();
+		$(".cnt_centerbody_mfa_confirm").show();
+		var selected_factor = $("input[name='factor']:checked").val();
+		var factors = JSON.parse(localStorage.getItem("factors") || "[]");
+		$.each(factors, function( index, factor ) {
+			if (factor.factorType == selected_factor) {
+				console.log('sending verification code for: '+ selected_factor);
+				sendCodeUrl = factor._links.verify.href;
+				if (selected_factor == 'sms') {
+					$(".lbl_selected_factor").text(factor.profile.phoneNumber);			
+				} else if (selected_factor == 'email') {
+					$(".lbl_selected_factor").text(factor.profile.email);
+				}
+			}
+		})
+		var stateToken = localStorage.getItem('stateToken');
+		if (selected_factor == 'sms' || selected_factor == 'email') {
+			var settings = {
+			  "url": sendCodeUrl,
+			  "method": "POST",
+			  "timeout": 0,
+			  "headers": {
+			    "Accept": "application/json",
+			    "Content-Type": "application/json"
+			  },
+			  "data": '{ "stateToken": "'+ stateToken +'" }'
+			};
+			console.log(settings);
+			$.ajax(settings).done(function (response) {
+			  $(".inp_otp").focus();
+			  console.log('lets go and confirm');
+			  console.log(response);
+			  localStorage.setItem('confirmCode', response._links.next.href);
+			  localStorage.setItem('resendCode', response._links.resend[0].href)
+			}).fail(function (response) {
+			  alert('something went wrong with sending the verification code')
+			  console.log(response);
+			});
+		} else {
+			alert('only sms and email are supported in this demo!');
+		}
+
+	})
+
+// Execute to verify the code provided by the user
+	$(".btn_confirmcode").click(function(){
+		var userCode = $(".inp_otp").val();
+		var confirmCodeUrl = localStorage.getItem('confirmCode');
+		var stateToken = localStorage.getItem('stateToken');
+		if (userCode) {
+			var settings = {
+			  "url": confirmCodeUrl,
+			  "method": "POST",
+			  "timeout": 0,
+			  "headers": {
+			    "Accept": "application/json",
+			    "Content-Type": "application/json"
+			  },
+			  "data": '{ "stateToken": "'+ stateToken +'", "passCode": "'+ userCode +'" }'
+			};
+			console.log(settings);
+			$.ajax(settings).done(function (response) {
+			  console.log('login was successful')
+			  console.log(response);
+			  displayName = response._embedded.user.profile.firstName + ' '+ response._embedded.user.profile.lastName
+			  $(".lbl_user").text(displayName);
+			  $(".cnt_page").hide();
+			  $(".cnt_centerbody_app").show();
+			  $(".btn_logout").show();
+			  $(".btn_contactus").hide();
+	  		  $(".cnt_footer").hide();
+
+			}).fail(function (response) {
+			  alert('something went wrong with confirming the code')
+			  console.log(response);
+			});
+		} else {
+			alert('You need to enter a code dummy!');
+		}
+
+
+	})
+
+	$('.btn_lostusername').click(function(){
+		$(".cnt_page").hide();
+		$(".cnt_centerbody_lostusername").show();		
+	})
+
+	$(".btn_login").click(function(){
+  		localStorage.setItem('stateToken', '');
+
+		console.log('login initiated with these settings:');
+		var username = $(".inp_username").val();
+		var password = $(".inp_dob").val();
+		var settings = {
+		  "url": oktaorg + "/api/v1/authn",
+		  "method": "POST",
+		  "timeout": 0,
+		  "headers": {
+		    "Accept": "application/json",
+		    "Content-Type": "application/json"
+		  },
+		  "data": JSON.stringify({
+		  	"username":username,
+		  	"password":password,
+		  	"options":{
+		  		"multiOptionalFactorEnroll":true,
+		  		"warnBeforePasswordExpired":false
+		  	}
+		  }),
+		};
+
+	$.ajax(settings).done(function (response) {
+	  console.log(response);
+	  var result = response.status
+	  if (result == 'MFA_ENROLL') {
+	  	alert('The user does not have MFA enrolled, and enrolling is not supported by this demo');
+		$(".cnt_page").hide();
+		$(".cnt_centerbody_unknown").show();	  	
+	  }
+	  else if (result == 'MFA_REQUIRED') {
+	  	localStorage.setItem('stateToken', response.stateToken)
+//		localStorage.setItem('factors', response._embedded.factors)
+		localStorage.setItem("factors", JSON.stringify(response._embedded.factors));
+		$(".cnt_page").hide();
+		$(".cnt_centerbody_mfa").show();
+		factors = response._embedded.factors
+		$.each(factors, function( index, factor ) {
+		  console.log('we found an enrolled factor: ' + factor.factorType);
+		  if (factor.factorType == 'sms') {
+		  	$(".cnt_factor_phone").show();
+		  	$(".lbl_factor_phone").text(factor.profile.phoneNumber);
+		  }
+		  if (factor.factorType == 'email') {
+		  	$(".cnt_factor_email").show();
+		  	$(".lbl_factor_email").text(factor.profile.email);
+		  }
+		});
+	  } else {
+		alert('welcome ' + response._embedded.user.profile.firstName) +'!';
+  		$(".cnt_page").hide();
+		$(".cnt_centerbody_app").show();
+
+	  }
+	}).fail(function (response) {
+  		$(".cnt_page").hide();
+		$(".cnt_centerbody_lostusername").show();
+	})
+})
+
+</script>
